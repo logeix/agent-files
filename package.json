@@ -1,0 +1,62 @@
+{
+  "name": "@logeix/agent-files",
+  "version": "0.1.0",
+  "description": "Astro integration for LOGEIX client sites: markdown copies of every page, llms.txt, and IndexNow pings on deploy",
+  "type": "module",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/logeix/agent-files.git"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "bin": {
+    "agent-files-indexnow": "dist/cli.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run build && npm test"
+  },
+  "keywords": [
+    "astro",
+    "astro-integration",
+    "llms.txt",
+    "markdown",
+    "indexnow"
+  ],
+  "dependencies": {
+    "node-html-markdown": "^2.0.0",
+    "node-html-parser": "^6.1.13"
+  },
+  "peerDependencies": {
+    "astro": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "astro": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.3"
+  }
+}
